@@ -1,3 +1,6 @@
 # Deep-Learning-Final-Project
 
-Jake Hamilton
+
+#Jake Hamilton
+#Noah Walsh
+#Ben Valois
