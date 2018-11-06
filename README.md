@@ -1,7 +1,7 @@
 # Deep-Learning-Final-Project
 
 #Derek Windahl
-# RICK DJEUHON
+#Rick Djeuhon
 #Jake Hamilton
 #Noah Walsh
 #Ben Valois
