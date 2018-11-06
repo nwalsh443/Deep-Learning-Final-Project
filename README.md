@@ -1,2 +1,6 @@
 # Deep-Learning-Final-Project
-# RICKDJEUHON 
+
+# RICK DJEUHON
+#Jake Hamilton
+#Noah Walsh
+#Ben Valois
