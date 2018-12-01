@@ -1,55 +1,78 @@
 import tensorflow as tf
-from keras.datasets import imdb
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.layers import Flatten
-from keras.layers.convolutional import Conv1D
-from keras.layers.convolutional import MaxPooling1D
-from keras.layers.embeddings import Embedding
-from keras.preprocessing import sequence
-from keras import regularizers
+from keras.models import Sequential, Model
+from keras.layers.wrappers import TimeDistributed
+from keras.layers.merge import concatenate
+from keras.layers.advanced_activations import LeakyReLU
+from keras.layers import Reshape, Activation, Conv2D, Input, MaxPooling2D, BatchNormalization, Flatten, Dense, Lambda, ConvLSTM2D
+from keras.callbacks import EarlyStopping, ModelCheckpoint, TensorBoard
+from keras.optimizers import SGD, Adam, RMSprop
+
 import numpy as np
 class TRACKNET: 
     def __init__(self, batch_size, train = True):
         self.parameters = {}
         self.batch_size = batch_size
-        self.target = tf.placeholder(tf.float32, [batch_size, 227, 227, 3])
-        self.image = tf.placeholder(tf.float32, [batch_size, 227, 227, 3])
-        self.bbox = tf.placeholder(tf.float32, [batch_size, 4])
+        
+        #self.target = tf.placeholder(tf.float32, [batch_size, 227, 227, 3])
+        self.input_target = Input(batch_shape=(self.batch_size, 227, 227, 3)) #enter input batch shape
+        #self.image = tf.placeholder(tf.float32, [batch_size, 227, 227, 3])
+        self.input_image = Input(batch_shape=(self.batch_size, 227, 227, 3))
+        #self.bbox = tf.placeholder(tf.float32, [batch_size, 4])
+        bbox = Input(batch_shape=(self.batch_size, 4))
+        
         self.train = train
         self.wd = 0.0005
     def build(self):
+        #Updated to keras, based on https://github.com/kshitiz38/object-tracking
+        # Layer 1
+        x = Conv2D(32, (3,3), strides=(1,1), padding='same', name='conv_1', use_bias=False)(input_image)
+        x = BatchNormalization(name='norm_1')(x)
+        x = LeakyReLU(alpha=0.1)(x)
+        x = MaxPooling2D(pool_size=(2, 2))(x)
+
+        # Layer 2
+        x = Conv2D(64, (3,3), strides=(1,1), padding='same', name='conv_2', use_bias=False)(x)
+        x = BatchNormalization(name='norm_2')(x)
+        x = LeakyReLU(alpha=0.1)(x)
+        x = MaxPooling2D(pool_size=(2, 2))(x)
+
+        # Layer 3
+        x = Conv2D(128, (3,3), strides=(1,1), padding='same', name='conv_3', use_bias=False)(x)
+        x = BatchNormalization(name='norm_3')(x)
+        x = LeakyReLU(alpha=0.1)(x)
+
         ########### for target ###########
         # [filter_height, filter_width, in_channels, out_channels]
-        self.target_conv1 = self._conv_relu_layer(bottom = self.target, filter_size = [11, 11, 3, 96],
-                                                    strides = [1,4,4,1], name = "target_conv_1")
+        
+        #self.target_conv1 = self._conv_relu_layer(bottom = self.target, filter_size = [11, 11, 3, 96],
+        #                                            strides = [1,4,4,1], name = "target_conv_1")
         
         # now 55 x 55 x 96
-        self.target_pool1 = tf.nn.max_pool(self.target_conv1, ksize = [1, 3, 3, 1], strides=[1, 2, 2, 1],
-                                                    padding='VALID', name='target_pool1')
+        #self.target_pool1 = tf.nn.max_pool(self.target_conv1, ksize = [1, 3, 3, 1], strides=[1, 2, 2, 1],
+         #                                           padding='VALID', name='target_pool1')
         # now 27 x 27 x 96
-        self.target_lrn1 = tf.nn.local_response_normalization(self.target_pool1, depth_radius = 2, alpha=0.0001,
-                                                    beta=0.75, name="target_lrn1")
+        #self.target_lrn1 = tf.nn.local_response_normalization(self.target_pool1, depth_radius = 2, alpha=0.0001,
+          #                                          beta=0.75, name="target_lrn1")
         # now 27 x 27 x 96
 
-        self.target_conv2 = self._conv_relu_layer(bottom = self.target_lrn1,filter_size = [5, 5, 48, 256],
-                                                    strides = [1,1,1,1], pad = 2, bias_init = 1.0, group = 2, name="target_conv_2")
+        #self.target_conv2 = self._conv_relu_layer(bottom = self.target_lrn1,filter_size = [5, 5, 48, 256],
+           #                                         strides = [1,1,1,1], pad = 2, bias_init = 1.0, group = 2, name="target_conv_2")
         # now 27 x 27 x 256
 
-        self.target_pool2 = tf.nn.max_pool(self.target_conv2, ksize=[1, 3, 3, 1], strides=[1, 2, 2, 1],
-                                                    padding='VALID', name='target_pool2')
+        #self.target_pool2 = tf.nn.max_pool(self.target_conv2, ksize=[1, 3, 3, 1], strides=[1, 2, 2, 1],
+            #                                        padding='VALID', name='target_pool2')
         # now 13 x 13 x 256
-        self.target_lrn2 = tf.nn.local_response_normalization(self.target_pool2, depth_radius = 2, alpha=0.0001,
-                                                    beta=0.75, name="target_lrn2")
+        #self.target_lrn2 = tf.nn.local_response_normalization(self.target_pool2, depth_radius = 2, alpha=0.0001,
+             #                                       beta=0.75, name="target_lrn2")
         # now 13 x 13 x 256
-        self.target_conv3 = self._conv_relu_layer(bottom = self.target_lrn2,filter_size = [3, 3, 256, 384],
-                                                    strides = [1,1,1,1], pad = 1, name="target_conv_3")
+        #self.target_conv3 = self._conv_relu_layer(bottom = self.target_lrn2,filter_size = [3, 3, 256, 384],
+              #                                      strides = [1,1,1,1], pad = 1, name="target_conv_3")
         # now 13 x 13 x 384
-        self.target_conv4 = self._conv_relu_layer(bottom = self.target_conv3,filter_size = [3, 3, 192, 384], bias_init = 1.0, 
-                                                    strides = [1,1,1,1], pad = 1, group = 2, name="target_conv_4")
+        #self.target_conv4 = self._conv_relu_layer(bottom = self.target_conv3,filter_size = [3, 3, 192, 384], bias_init = 1.0, 
+               #                                     strides = [1,1,1,1], pad = 1, group = 2, name="target_conv_4")
         # now 13 x 13 x 384
-        self.target_conv5 = self._conv_relu_layer(bottom = self.target_conv4,filter_size = [3, 3, 192, 256], bias_init = 1.0, 
-                                                    strides = [1,1,1,1], pad = 1, group = 2, name="target_conv_5")
+        #self.target_conv5 = self._conv_relu_layer(bottom = self.target_conv4,filter_size = [3, 3, 192, 256], bias_init = 1.0, 
+                #                                    strides = [1,1,1,1], pad = 1, group = 2, name="target_conv_5")
         # now 13 x 13 x 256
         self.target_pool5 = tf.nn.max_pool(self.target_conv5, ksize=[1, 3, 3, 1], strides=[1, 2, 2, 1],
                                                     padding='VALID', name='target_pool5')
