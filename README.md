@@ -3,24 +3,11 @@
 #Rick Djeuhon
 #Derek Windahl
 #Jake Hamilton
+
 Our work is based on GOTURN
-# GOTURN-Tensorflow
 
-This is a tensorflow implementation of GOTURN.
+https://github.com/tangyuhao/GOTURN-Tensorflow
 
-Thanks to author **David Held** for his help of this implementation.
-
-The original paper is: 
-
-**[Learning to Track at 100 FPS with Deep Regression Networks](http://davheld.github.io/GOTURN/GOTURN.html)**,
-<br>
-[David Held](http://davheld.github.io/),
-[Sebastian Thrun](http://robots.stanford.edu/),
-[Silvio Savarese](http://cvgl.stanford.edu/silvio/),
-<br>
-
-The github repo for caffe implementation is given by the authors:
-**[davheld/GOTURN](https://github.com/davheld/GOTURN)**
 
 Brief illustration of how this network works:
 
