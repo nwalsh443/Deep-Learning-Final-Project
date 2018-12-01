@@ -1,3 +1,9 @@
+#Noah Walsh
+#Ben Valois
+#Rick Djeuhon
+#Derek Windahl
+#Jake Hamilton
+Our work is based on GOTURN
 # GOTURN-Tensorflow
 
 This is a tensorflow implementation of GOTURN.
