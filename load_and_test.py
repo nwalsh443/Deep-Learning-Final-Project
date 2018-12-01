@@ -1,8 +1,9 @@
 # train file
-
+#import packages
 import logging
 import time
 import tensorflow as tf
+import keras
 import os
 import goturn_net
 
