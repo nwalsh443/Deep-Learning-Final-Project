@@ -1,48 +1,14 @@
-#Noah Walsh
-#Ben Valois
-#Rick Djeuhon
-#Derek Windahl
-#Jake Hamilton
+## Deep Learning Holiday Image Manipulation
+Created by Noah Walsh, Ben Valois, Rick Djeuhon, Derek Windahl, and Jake Hamilton
 
-Our work is based on GOTURN
-
-https://github.com/tangyuhao/GOTURN-Tensorflow
-
-
-Brief illustration of how this network works:
-
-<img src="imgs/pull7f-web_e2.png" width=85%>
-
-You can refer to the paper or github repo above for more details.
+Our project manipulates a non-holiday image to appear more like a holiday with the deep convolutional neural network Inception v3, that we trained with a custom holiday classification image dataset.
 
 ## Environment
 - python3
-- tensorflow 1.0+, both cpu and gpu work fine
+- keras
+- tensorflow
+- pillow
+
 
 ## How to use it
-### Finetune for your own dataset
-1. Create a folder, fill in all training images
-2. Create a <train_txt_file>.txt file
-    - It should contains target image, searching image and ground-truth bounding box
-    - Bounding box is in the form of `<x1, y1, x2, y2>`, usually from 0 to 1, but exceeding this range is also fine.
-    - Example of one line: 
-    `train/target/000024.jpg,train/searching/000024.jpg,0.29269230769230764,0.22233115468409587,0.7991794871794871,0.7608061002178649`
-3. Change related places in `train.py`
-4. Train it and wait!
-```python
-python train.py
-```
-5. The log file is `train.log` by default
-
-### Test 
-1. Download pretrained model from: [GOTURN_MODEL](https://drive.google.com/open?id=0BwToyaMzz69QZ3Zlc0h4NzhBNDg)
-2. Uncompress the `checkpoints` folder, and put it in the root directory of this repo 
-3. Test on examples just by running `load_and_test.py` 
-```python
-python load_and_test.py
-```
-4. The log file is `test.log` by default
-
-### TIPS
-Be careful, the output of this network actually always from 0 to 10 thus I multiplied the ground-truth bounding boxes( always ranging from 0 to 1) by 10.
-
+Run the train.py file, making sure the paths to the training data is correct. Then run the HolidayImageManipulation.py file, making sure that the paths to the output image you want to manipulate and the resulting output image are correct. 
