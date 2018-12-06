@@ -1,5 +1,5 @@
 ## Deep Learning Holiday Image Manipulation
-Created by Noah Walsh, Ben Valois, Rick Djeuhon, Derek Windahl, and Jake Hamilton
+Created by Noah Walsh, Ben Valois, Rick Djeuhon, Derek Windahl "VerseForty", and Jake Hamilton
 
 Our project manipulates a non-holiday image to appear more like a holiday with the deep convolutional neural network Inception v3, that we trained with a custom holiday classification image dataset.
 
