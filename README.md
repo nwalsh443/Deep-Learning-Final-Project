@@ -11,4 +11,4 @@ Our project manipulates a non-holiday image to appear more like a holiday with t
 
 
 ## How to use it
-Run the train.py file, making sure the paths to the training data is correct. Then run the HolidayImageManipulation.py file, making sure that the paths to the output image you want to manipulate and the resulting output image are correct. 
+Run the TrainHolidayV3.ipynb notebook, making sure the paths to the training data Holiday_images is correct. Then run the HolidayImageManipulator.ipynb notebook, making sure that the paths to the input image you want to manipulate and the resulting output image are correct. 
