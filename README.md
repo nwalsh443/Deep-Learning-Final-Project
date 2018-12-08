@@ -14,6 +14,8 @@ pandas
 
 numpy
 
+pillow
+
 ## How to use it
 Clone or download this project. Then log onto Noah Walsh's Dev Cloud Account through PuTTY. Upload the Holiday_images training folder. Make sure to rename or delete any existing '.h5' weight files, such as holiday_weights.h5, or '.png' output files, such as result.png, before beginning. Enter these commands:
 
