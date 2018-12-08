@@ -3,6 +3,17 @@ Created by Noah Walsh, Ben Valois, Rick Djeuhon, Derek Windahl "VerseForty", and
 
 Our project manipulates a non-holiday image to appear more like a holiday with the deep convolutional neural network Inception v3, that we trained with a custom holiday classification image dataset.
 
+## Environment Package Requirements
+tensorflow 1.5
+
+keras
+
+scipy
+
+pandas
+
+numpy
+
 ## How to use it
 Clone or download this project. Then log onto Noah Walsh's Dev Cloud Account through PuTTY. Upload the Holiday_images training folder. Make sure to rename or delete any existing '.h5' weight files, such as holiday_weights.h5, or '.png' output files, such as result.png, before beginning. Enter these commands:
 
