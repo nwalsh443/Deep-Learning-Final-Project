@@ -3,12 +3,13 @@ Created by Noah Walsh, Ben Valois, Rick Djeuhon, Derek Windahl "VerseForty", and
 
 Our project manipulates a non-holiday image to appear more like a holiday with the deep convolutional neural network Inception v3, that we trained with a custom holiday classification image dataset.
 
-## Environment
-- python3
-- keras
-- tensorflow
-- pillow
-
-
 ## How to use it
-Run the TrainHolidayV3.ipynb notebook, making sure the paths to the training data folder Holiday_images is correct, which can be downloaded from the Google Drive Folder, Data for Deep Learning Holiday Image Manipulation Project. Then run the HolidayImageManipulator.ipynb notebook, making sure that the paths to the input image you want to manipulate and the resulting output image are correct.  
+Clone or download this project. Then log onto Noah Walsh's Dev Cloud Account through PuTTY. Upload the Holiday_images training folder. Make sure to delete any existing holiday_weights.h5 or result.png files. Enter these commands:
+
+qsub -I
+source activate testEnv
+ipython
+
+Then copy and paste the TrainHolidayV3.py code into the ipython shell, making sure the paths to the Holiday_images training folder are correct. Then run the code. When it is done, the Inception network weights file holiday_weights.h5 should be saved.
+
+Then copy and paste the HolidayImageManipulator.py code into the ipython shell. Make sure the path to the input image you are manipulating is correct, and that the path to the output file result.png that will be created when the code is done is correct as well. Run the code. When done, the output file result.png should be saved.
