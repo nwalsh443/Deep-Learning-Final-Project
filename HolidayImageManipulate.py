@@ -1,9 +1,13 @@
 #HolidayImageManipulator.py
 #Created by Noah Walsh, Ben Valois, Rick Djeuhon, Derek Windahl, Jake Hamilton
 #Deep Learning Holiday Image Manipulation
+#DeepHoliday manipulates non-holiday images with a deep convolutional neural network classifier, trained on a custom dataset
+#of holiday images, to make the non-holiday input images look more holiday-themed and festive.
+#HolidayImageManipulator manipulates a non-holiday input image to look more festive and holiday-themed
+#with the Inception V3 deep convolutional neural network loaded with trained weights from training on a custom holiday dataset.
 #Based on Deep Dreaming in Keras from the keras team and alterations from Alan Jamieson
-#Make sure to have holiday_weights downloaded or created by TrainHolidayV3.ipynb
-#12/8/18
+#Make sure to have holiday_weights.h5 created by running TrainHolidayV3.py code.
+#12/10/18
 
 from __future__ import print_function
 
