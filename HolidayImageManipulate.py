@@ -19,7 +19,7 @@ from keras.applications import inception_v3
 from keras import backend as K
 from keras.preprocessing.image import ImageDataGenerator
 
-base_image_path = './Crescents.jpg'
+base_image_path = './baltimorepennMD.jpg'
 result_prefix = './result'
 
 # These are the names of the layers
