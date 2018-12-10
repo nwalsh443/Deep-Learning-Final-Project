@@ -17,7 +17,7 @@ numpy
 pillow
 
 ## How to use it
-Clone or download this project. Then log onto Noah Walsh's Dev Cloud Account through PuTTY. Download the Holiday_images training folder from the shared Google Drive, Data for Deep Learning Holiday Image Manipulation Project, and upload it to the Dev Cloud account. Upload the .jpg input images to Dev Cloud. Make sure to rename or delete any existing '.h5' weight files, such as holiday_weights.h5, or '.png' output files, such as result.png, before beginning. Enter these commands:
+Clone or download this project. Then log onto Noah Walsh's Dev Cloud Account through PuTTY. The Holiday_images training folder is already on Noah's Dev Cloud Account, but you can also download it from the shared Google Drive, Data for Deep Learning Holiday Image Manipulation Project, and upload it to the Dev Cloud account if you want. The .jpg input images are also on Dev Cloud, but you can download them and upload them to Dev Cloud again. Make sure to rename or delete any existing '.h5' weight files, such as holiday_weights.h5, or '.png' output files, such as result.png, before beginning. Enter these commands:
 
 qsub -I
 
