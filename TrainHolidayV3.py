@@ -1,12 +1,14 @@
 #TrainHolidayV3.py 
 #Created by Noah Walsh, Ben Valois, Rick Djeuhon, Derek Windahl, and Jake Hamilton
-#Deep Learning Holiday Image Manipulation
-#Trains the Inception V3 classifier with the custom Holiday_images dataset, and saves the weights
+#DeepHoliday: Deep Learning Holiday Image Manipulation
+#DeepHoliday manipulates non-holiday images with a deep convolutional neural network classifier, trained on a custom dataset
+#of holiday images, to make the non-holiday input images look more holiday-themed and festive.
+#This file trains the Inception V3 classifier with the custom Holiday_images dataset, and saves the weights
 #for later use in HolidayImageManipulator.py
 #Make sure to have the Holiday_images training and testing folder downloaded and in the correct location, and
 #copy and paste this code into an ipython shell in Noah Walsh's Dev Cloud account in the correct environment, details
 #laid out in the ReadMe file.
-#12/8/18
+#12/10/18
 
 from __future__ import print_function
 
