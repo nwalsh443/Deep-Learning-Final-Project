@@ -15,8 +15,8 @@ from keras.applications import inception_v3
 from keras import backend as K
 from keras.preprocessing.image import ImageDataGenerator
 
-base_image_path = './Schaefer_pic.jpg'
-result_prefix = './thisresult1'
+base_image_path = './Crescents.jpg'
+result_prefix = './result'
 
 # These are the names of the layers
 # for which we try to maximize activation,
