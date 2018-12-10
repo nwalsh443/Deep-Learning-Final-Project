@@ -27,11 +27,11 @@ train_data_dir = 'Holiday_images/train'
 
 validation_data_dir = 'Holiday_images/val' #break into train and val
 
-nb_train_samples = 1994 #Total number of training images
+nb_train_samples = 2013 #Total number of training images
 
-nb_validation_samples = 475 #Total number of testing images
+nb_validation_samples = 481 #Total number of testing images
 
-epochs = 20
+epochs = 2
 
 batch_size = 10
 
