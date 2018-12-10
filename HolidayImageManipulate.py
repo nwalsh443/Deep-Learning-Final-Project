@@ -1,9 +1,9 @@
-#HolidayImageManipulator.ipynb
+#HolidayImageManipulator.py
 #Created by Noah Walsh, Ben Valois, Rick Djeuhon, Derek Windahl, Jake Hamilton
 #Deep Learning Holiday Image Manipulation
 #Based on Deep Dreaming in Keras from the keras team and alterations from Alan Jamieson
 #Make sure to have holiday_weights downloaded or created by TrainHolidayV3.ipynb
-#12/6/18
+#12/8/18
 
 from __future__ import print_function
 
