@@ -1,4 +1,4 @@
-#TrainHolidayV3.ipynb 
+#TrainHolidayV3.py 
 #Created by Noah Walsh, Ben Valois, Rick Djeuhon, Derek Windahl, and Jake Hamilton
 #Deep Learning Holiday Image Manipulation
 #Trains the Inception V3 classifier with the custom Holiday_images dataset, and saves the weights
@@ -27,11 +27,11 @@ train_data_dir = 'Holiday_images/train'
 
 validation_data_dir = 'Holiday_images/val' #break into train and val
 
-nb_train_samples = 2013
+nb_train_samples = 1994 #Total number of training images
 
-nb_validation_samples = 481 #Usually set val to 0 to maximise training dataset
+nb_validation_samples = 475 #Total number of testing images
 
-epochs = 2
+epochs = 20
 
 batch_size = 10
 
