@@ -24,9 +24,9 @@ from keras.preprocessing.image import ImageDataGenerator
 img_width, img_height = 150, 150
 
 
-
+# this is the name of the folder with the training dataset
 train_data_dir = 'Holiday_images/train'
-
+#this is the name of the folder with the validation dataset
 validation_data_dir = 'Holiday_images/val' #break into train and val
 
 nb_train_samples = 2013 #Total number of training images
@@ -46,7 +46,7 @@ else:
 
     input_shape = (img_width, img_height, 3)
 
-# Shows Loss and Accuracy correctly
+# Setting this to 1 shows Loss and Accuracy correctly
 K.set_learning_phase(1)
 
 # Build the InceptionV3 network with our placeholder.
