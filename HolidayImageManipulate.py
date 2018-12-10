@@ -5,7 +5,7 @@
 #of holiday images, to make the non-holiday input images look more holiday-themed and festive.
 #HolidayImageManipulator manipulates a non-holiday input image to look more festive and holiday-themed
 #with the Inception V3 deep convolutional neural network loaded with trained weights from training on a custom holiday dataset.
-#Based on Deep Dreaming in Keras from the keras team and alterations from Alan Jamieson
+#Based on Deep Dreaming in Keras from the keras team and alterations from Alan Jamieson.
 #Make sure to have holiday_weights.h5 created by running TrainHolidayV3.py code.
 #12/10/18
 
